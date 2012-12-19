@@ -4,6 +4,13 @@ require_once 'html/header.html';
 
 <h1>What's New</h1>
 <h2>2012</h2>
+<h3>December</h3>
+<ul>
+	<li>
+		<h4>19</h4>
+		<p>Bizti is now available for download on GitHub - if you want to use Bizti for your own business, but don't want us to manage it for you, feel free to download it and install it yourself. Available here: <a href="https://github.com/kaeverens/bizti">github</a>.</p>
+	</li>
+</ul>
 <h3>November</h3>
 <ul>
 	<li>
