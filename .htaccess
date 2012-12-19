@@ -1,0 +1,21 @@
+<IfModule mod_deflate.c>
+	SetOutputFilter DEFLATE
+</IfModule>
+<IfModule mod_php5.c>
+	php_flag magic_quotes_gpc off
+</IfModule>
+<IfModule mod_headers.c>
+	Header unset ETag
+	Header unset Last-Modified
+</IfModule>
+FileETag None
+
+RewriteEngine on
+
+RewriteCond %{SCRIPT_NAME} !\.php
+RewriteRule ^validate/(.*)/(.*)$ /php/validate.php?id=$1&md5=$2 [QSA,L]
+RewriteRule ^userdata/(.*),(.*)$ /userdata/$1 [L]
+RewriteRule ^j/(.*)/(.*)$ /js/$2 [L]
+
+AddCharset utf-8 .js
+AddCharset utf-8 .php
