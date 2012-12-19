@@ -1,3 +1,5 @@
 copy ../config.dist.php to ../config.php
 edit ../config.php to your own settings
 install database.sql into your database
+create directories ../cache and ../userdata
+make ../cache and ../userdata writeable by the server
