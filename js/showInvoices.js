@@ -137,7 +137,9 @@ function showInvoices() {
 		$('#dialog-date')
 			.val(inv.date)
 			.datepicker({
-				'dateFormat':'yy-mm-dd'
+				'dateFormat':'yy-mm-dd',
+				'changeMonth':true,
+				'changeYear':true
 			});
 		// }
 		// { products
@@ -240,7 +242,45 @@ function showInvoices() {
 							.text(v?v.name+' ('+v.percentage+'%)':'');
 						opts.push($opt);
 					});
-					$('#popup-product-tax').append(opts);
+					opts.push($('<option value="-1"> -- Add Tax -- </option>'));
+					var $tax=$('#popup-product-tax').append(opts);
+					$tax.change(function() {
+						var $this=$(this);
+						var val=+$this.val();
+						if (val!='-1') {
+							return;
+						}
+						$this.val('0');
+						var html='<table><tr><th>Tax Name</th><td>'
+							+'<input id="popup-tax-name"/></td></tr>'
+							+'<tr><th>Percentage</th><td>'
+							+'<input type="number" id="popup-tax-percentage"/></td></tr>'
+							+'</table>';
+						var $taxDialog=$(html).dialog({
+							'modal':true,
+							'close':function() {
+								$taxDialog.remove();
+							},
+							'buttons':{
+								'Create Tax':function() {
+									$.post('/php/create-tax.php', {
+										'name':$('#popup-tax-name').val(),
+										'percentage':+$('#popup-tax-percentage').val()
+									}, function(ret) {
+										if (ret.error) {
+											return alert(ret.error);
+										}
+										taxes.push(ret);
+										$taxDialog.remove();
+										updateTaxes(taxes, showTax);
+										$('<option value="'+ret.id+'">'+ret.name+'</option>')
+											.insertBefore($tax.find('option:last-child'));
+										$tax.val(ret.id);
+									});
+								}
+							}
+						});
+					});
 				});
 			});
 		}
@@ -462,8 +502,13 @@ function showInvoices() {
 			$actions.append($edit);
 			// }
 			// { print
-			var print=' <a href="/php/invoice-print.php?id='+aData[0]+'"'
+			var print='&nbsp;<a href="/php/invoice-print.php?id='+aData[0]+'"'
 				+' target="_blank" class="print">[print]</a>';
+			$actions.append(print);
+			// }
+			// { pdf
+			var print='&nbsp;<a href="/php/invoice-pdf.php?id='+aData[0]+'"'
+				+' target="_blank" class="pdf">[pdf]</a>';
 			$actions.append(print);
 			// }
 			// }

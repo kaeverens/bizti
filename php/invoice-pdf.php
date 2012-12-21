@@ -5,6 +5,7 @@ if (!isset($_SESSION['userdata']['id'])) {
 	exit;
 }
 
+$imgsrc='local';
 require_once 'invoice-html.php';
 require_once 'dompdf/dompdf_config.inc.php';
 

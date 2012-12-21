@@ -40,7 +40,11 @@ function price($num) {
 	return $_SESSION['userdata']['currency'].sprintf('%0.2f', $num);
 }
 
-$template=str_replace('{{$logo_url}}', '/userdata/'.$user_id.'/logo.png', $template);
+$template=str_replace(
+	'{{$logo_url}}',
+	($imgsrc=='local'?$_SERVER['DOCUMENT_ROOT']:'').'/userdata/'.$user_id.'/logo.png',
+	$template
+);
 $template=str_replace('{{$invoice_number}}', $inv['num'], $template);
 $template=str_replace('{{$invoice_date}}', $inv['cdate'], $template);
 $template=str_replace('{{$invoice_total}}', price($inv['total']), $template);
