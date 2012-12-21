@@ -363,7 +363,6 @@ function showInvoices() {
 		$('#dialog-notes').val(inv.notes);
 		CKEDITOR.replace( 'dialog-notes', {
 			'height':100,
-			'extraPlugins': 'bbcode',
 			'toolbar': [
 				[ 'Undo', 'Redo' ],
 				[ 'Link', 'Unlink' ],

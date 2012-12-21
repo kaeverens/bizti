@@ -27,8 +27,6 @@ Date.prototype.toYMD =function() {
 	}
 	return year + "-" + month + "-" + day;
 };
-CKEDITOR.basePath='/js/ckeditor/';
-CKEDITOR.config.contentsCss=CKEDITOR.basePath+"contents.css";
 function updateTaxes(ret, callback) {
 	taxes=ret;
 	window.taxesById=[];
@@ -110,3 +108,5 @@ $(function() {
 	updateTaxes(taxes);
 	updateProducts(products);
 });
+CKEDITOR.editorConfig = function( config ) {
+};

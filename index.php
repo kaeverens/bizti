@@ -31,14 +31,14 @@ if (isset($_SESSION['userdata']['id'])) {
 	require_once 'html/scripts-bizti.me.html';
 	$ftime=filemtime('js/bizti.me.js');
 	echo '<script async="async"'
-		.' src="//static.bizti.me/j/'.$ftime.'/bizti.me.php"></script>';
+		.' src="/j/'.$ftime.'/bizti.me.php"></script>';
 }
 else {
 	echo '<div class="page-header">'
-		.'<h1>bizti.me <small>invoice and time-tracking tools for small'
+		.'<h1>bizti <small>invoice and time-tracking tools for small'
 		.' businesses</small></h1></div>';
 
-	echo '<p>bizti.me is a suite of applications for small businesses.'
+	echo '<p>bizti is a suite of applications for small businesses.'
 		.' It\'s designed to be simple and quick to use.</p>'
 		.'<p>To register or login, please click the button on the top right of the page!</p>'
 		.'<p>The applications currently included are:</p>'
@@ -47,7 +47,7 @@ else {
 	require_once 'html/scripts-not-logged-in.html';
 	$ftime=filemtime('js/bizti.me.js');
 	echo '<script async="async"'
-		.' src="//static.bizti.me/j/'.$ftime.'/not-logged-in.php"></script>';
+		.' src="/j/'.$ftime.'/not-logged-in.php"></script>';
 }
 
 echo file_get_contents('html/footer.html');

@@ -1,4 +1,0 @@
-<IfModule expires_module>
-  ExpiresActive On
-	ExpiresDefault A259200
-</IfModule>

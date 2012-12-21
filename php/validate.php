@@ -21,7 +21,7 @@ else {
 		);
 		echo '<p>Welcome!</p>'
 			.'<p>Your account has been validated, and you are now logged in.</p>'
-			.'<p>Please <a href="/">click here</a> to start using bizti.me.</p>'
+			.'<p>Please <a href="/">click here</a> to start using bizti.</p>'
 			.'<script>document.location="/";</script>';
 		$_SESSION['userdata']=array(
 			'id'=>$r['id'],

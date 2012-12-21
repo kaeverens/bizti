@@ -30,7 +30,7 @@ $id=dbLastInsertId();
 
 mail(
 	$email,
-	'[bizti.me] User Verification',
+	'[bizti] User Verification',
 	"Hi!\n\nYou, or someone claiming to be you, have registered"
 	." at bizti.me.\n\nIn order to complete the registration, please click the"
 	." following link.\n\nhttp://bizti.me/validate/$id/$validation\n\n"
