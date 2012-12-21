@@ -49,7 +49,7 @@ function dbInit() {
 		return $GLOBALS['db'];
 	}
 	try {
-		require_once $_SERVER['DOCUMENT_ROOT'].'/config.php';
+		require $_SERVER['DOCUMENT_ROOT'].'/config.php';
 		$db=new PDO(
 			'mysql:host='.$dbhost.';dbname='.$dbname,
 			$dbuser,

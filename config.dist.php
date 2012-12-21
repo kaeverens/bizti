@@ -6,7 +6,7 @@ $dbuser='root';
 $dbpass='';
 // }
 // { facebook
-$facebookAppId ='';
+$facebookClientId ='';
 $facebookSecret='';
 // }
 // { twitter

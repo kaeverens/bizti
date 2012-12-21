@@ -502,8 +502,13 @@ function showInvoices() {
 			$actions.append($edit);
 			// }
 			// { print
-			var print=' <a href="/php/invoice-print.php?id='+aData[0]+'"'
+			var print='&nbsp;<a href="/php/invoice-print.php?id='+aData[0]+'"'
 				+' target="_blank" class="print">[print]</a>';
+			$actions.append(print);
+			// }
+			// { pdf
+			var print='&nbsp;<a href="/php/invoice-pdf.php?id='+aData[0]+'"'
+				+' target="_blank" class="pdf">[pdf]</a>';
 			$actions.append(print);
 			// }
 			// }
