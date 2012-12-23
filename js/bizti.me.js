@@ -7,6 +7,7 @@ $.cachedScript=function(url, options) {
 	return $.ajax(options);
 };
 function currency(num) {
+	num=parseInt(num*100)/100;
 	var bits=(''+num).split('.');
 	var l=bits[0]==='null'?0:+bits[0];
 	var r=bits.length==2

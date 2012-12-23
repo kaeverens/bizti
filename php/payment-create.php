@@ -15,11 +15,10 @@ if (!$inv) {
 	die(json_encode(array('error'=>'invoice does not exist, or is not yours')));
 }
 
-dbQuery(
-	'insert into payments set invoice_id='.$iid.', cdate=now()'
+$sql1='insert into payments set invoice_id='.$iid.', cdate=now()'
 	.', amt='.$amt.', user_id='.$user_id
-	.', meta="{}"'
-);
+	.', meta="{}"';
+dbQuery($sql1);
 dbQuery(
 	'update invoices set paid=paid+'.$amt.' where id='.$iid
 );
@@ -27,4 +26,9 @@ dbQuery(
 	'update customers set paid=paid+'.$amt.' where id='.$inv['customer_id']
 );
 
-echo json_encode(array('ok'=>1));
+echo json_encode(
+	array(
+		'ok'=>1,
+		'sql1'=>$sql1
+	)
+);

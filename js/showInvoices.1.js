@@ -403,8 +403,7 @@ function showInvoices() {
 		'bJQueryUI':true,
 		'aaSorting':[[1, 'desc']],
 		'sAjaxSource':'/php/invoices-get-dt.php',
-		'sScrollY':'400px',
-		'sDom':'frtiS',
+		'sDom':'frtip',
 		'aoColumns':[
 			{'bVisible':false}
 			, null, null, {'sWidth':'80px'}, null
@@ -414,20 +413,20 @@ function showInvoices() {
 		'bProcessing':true,
 		'bServerSide':true,
 		'fnRowCallback':function(nRow, aData, iDisplayIndex) {
+			var owed=parseInt((aData[4]-aData[5])*100)/100;
 			// { customer
 			$('td:nth-child(2)', nRow).html(
 				'<span class="customer-name cid-'+aData[2]+'">...</span>'
 			);
 			// }
 			// { total
-			var cname=aData[4]-aData[5]?'':' fully-paid';
+			var cname=owed?'':' fully-paid';
 			$('td:nth-child(4)', nRow).addClass('price').html(currency(aData[4]));
 			// }
 			// { paid
 			$('td:nth-child(5)', nRow).addClass('price').html(currency(aData[5]));
 			// }
 			// { owing
-			var owed=+(aData[4]-aData[5]);
 			var $td=$('td:nth-child(6)', nRow).addClass('price')
 				.html('<span class="price">'+currency(owed)+'</span>&nbsp;');
 			$('<a href="#" class="add-payment'+cname+'">[pay]</a>')

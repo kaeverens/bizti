@@ -54,7 +54,7 @@ function showProducts() {
 		'aaSorting':[[1, 'asc']],
 		'sAjaxSource':'/php/products-get-dt.php',
 		'sScrollY':'400px',
-		'sDom':'frtiS',
+		'sDom':'frtip',
 		'aoColumns':[
 			{'bVisible':false}, {'sWidth':'200px'}, null, null, null
 		],

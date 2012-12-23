@@ -9,7 +9,7 @@ function showPayments() {
 		'aaSorting':[[1, 'asc']],
 		'sAjaxSource':'/php/payments-get-dt.php',
 		'sScrollY':'400px',
-		'sDom':'frtiS',
+		'sDom':'frtip',
 		'aoColumns':[
 			{'bVisible':false}, null, null, {'sWidth':'200px'}, null, null
 		],

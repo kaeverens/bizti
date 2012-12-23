@@ -14,14 +14,24 @@ $orderbyint=(int)$_REQUEST['iSortCol_0'];
 $orderdesc=$_REQUEST['sSortDir_0']=='asc'?'asc':'desc';
 
 switch((int)$_REQUEST['iSortCol_0']) {
-	default:
+	case 2: // {
 		$orderby='num';
+	break; // }
+	case 3: // {
+		$orderby='customer_name';
+	break; // }
+	case 4: // {
+		$orderby='amt';
+	break; // }
+	default:
+		$orderby='cdate';
 }
 
 $sql='select payments.id as id, num, invoices.customer_id as customer_id'
-	.', amt, payments.cdate as cdate'
-	.' from payments, invoices'
+	.', amt, payments.cdate as cdate, customers.name as customer_name'
+	.' from payments, invoices, customers'
 	.' where payments.invoice_id=invoices.id'
+	.' and customers.id=invoices.customer_id'
 	.' and payments.user_id='.$user_id.' order by '.$orderby.' '.$orderdesc
 	.' limit '.$start.', '.$length;
 

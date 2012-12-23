@@ -24,7 +24,7 @@ switch((int)$_REQUEST['iSortCol_0']) {
 		$orderby='paid';
 		break;
 	case 6:
-		$orderby='(total-paid)';
+		$orderby='owing';
 		break;
 	case 7:
 		$orderby='cdate';
@@ -33,8 +33,8 @@ switch((int)$_REQUEST['iSortCol_0']) {
 		$orderby='num';
 }
 
-$sql='select id,num, customer_id,cdate,total,paid,'
-	.' datediff(now(), cdate) as date_diff'
+$sql='select id,num, customer_id,cdate,total,paid,(total-paid) as owing'
+	.', datediff(now(), cdate) as date_diff'
 	.' from invoices'
 	.' where user_id='.$user_id.' order by '.$orderby.' '.$orderdesc
 	.' limit '.$start.', '.$length;
