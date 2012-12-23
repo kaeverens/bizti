@@ -57,7 +57,7 @@ function getCustomerName(id) {
 $(function() {
 	var functionStubs=[
 		'showCustomers', 'showInvoices', 'showPayments', 'showProducts',
-		'showProfile'
+		'showProfile', 'invoicesImport'
 	];
 	for (var i=0;i<functionStubs.length;++i) {
 		window[functionStubs[i]]=(function(fn) {

@@ -535,4 +535,13 @@ function showInvoices() {
 			$wrapper.find('>div.dataTables_wrapper>div:first-child')
 		);
 	// }
+	// { import invoices button
+	var $importInvoices=$(
+		'<button id="invoices-import">Import Invoices</button>'
+	)
+		.click(function() {
+			invoicesImport();
+		})
+		.insertAfter('#invoice-add');
+	// }
 }

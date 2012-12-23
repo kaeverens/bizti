@@ -517,7 +517,7 @@ function showInvoices() {
 			fillInCustomerNames(customerNames);
 		}
 	});
-	// { add invoice button
+	// { create invoice button
 	var $addInvoice=$(
 		'<button id="invoice-add">Create Invoice</button>'
 	)

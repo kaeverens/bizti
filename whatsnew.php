@@ -7,6 +7,18 @@ require_once 'html/header.html';
 <h3>December</h3>
 <ul>
 	<li>
+		<h4>23</h4>
+		<p>You can now import invoices, products, customers from Simple Invoices.</p>
+	</li>
+	<li>
+		<h4>22</h4>
+		<p>New logo!</p>
+	</li>
+	<li>
+		<h4>21</h3>
+		<p>You can now export your invoices as PDFs.</p>
+	</li>
+	<li>
 		<h4>19</h4>
 		<p>Bizti is now available for download on GitHub - if you want to use Bizti for your own business, but don't want us to manage it for you, feel free to download it and install it yourself. Available here: <a href="https://github.com/kaeverens/bizti">github</a>.</p>
 	</li>

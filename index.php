@@ -35,7 +35,8 @@ if (isset($_SESSION['userdata']['id'])) {
 }
 else {
 	echo '<div class="page-header">'
-		.'<h1>bizti <small>invoice and time-tracking tools for small'
+		.'<h1><img src="/images/logo.png" style="vertical-align:top;" height="48" width="132"/>'
+		.' <small>invoice and time-tracking tools for small'
 		.' businesses</small></h1></div>';
 
 	echo '<p>bizti is a suite of applications for small businesses.'
