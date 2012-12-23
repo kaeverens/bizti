@@ -35,3 +35,7 @@ dbQuery(
 	.', paid=(select sum(paid) from invoices where customer_id=customers.id)'
 	.' where user_id='.$_SESSION['userdata']['id']
 );
+dbQuery(
+	'update invoices set paid=0'
+	.' where paid is null and user_id='.$_SESSION['userdata']['id']
+);

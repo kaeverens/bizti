@@ -108,6 +108,12 @@ $(function() {
 	// }
 	updateTaxes(taxes);
 	updateProducts(products);
+	function poll() {
+		$.post('/php/poll.php', function() {
+			setTimeout(poll, 60000);
+		});
+	}
+	setTimeout(poll, 60000);
 });
 CKEDITOR.editorConfig = function( config ) {
 };
