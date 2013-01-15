@@ -39,9 +39,12 @@ else {
 		.' <small>invoice and time-tracking tools for small'
 		.' businesses</small></h1></div>';
 
+	echo '<iframe style="float:right" width="420" height="315" src="http://www.youtube.com/embed/v-N4RXDyOLI?rel=0" frameborder="0" allowfullscreen></iframe>';
 	echo '<p>bizti is a suite of applications for small businesses.'
 		.' It\'s designed to be simple and quick to use.</p>'
-		.'<p>To register or login, please click the button on the top right of the page!</p>'
+		.'<p>&nbsp;</p>'
+		.'<p><strong>To register or login, please click the button on the top right of the page</strong></p>'
+		.'<p>&nbsp;</p>'
 		.'<p>The applications currently included are:</p>'
 		.'<ul><li>Invoicing</li></ul>';
 

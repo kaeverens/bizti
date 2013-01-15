@@ -92,12 +92,12 @@ function showInvoices() {
 		// { customers
 		function showCustomers(ret) {
 			customerNames=ret;
-			var opts='<option value="0"> -- choose -- </option>';
+			var opts='<option value="0"> -- choose -- </option>'
+				+'<option value="-1"> -- Add New Customer -- </option>';
 			for (var i=0;i<customerNames.length;++i) {
 				opts+='<option value="'+customerNames[i].id+'">'
 					+customerNames[i].name+'</option>';
 			}
-			opts+='<option value="-1"> -- Add New Customer -- </option>';
 			$('#dialog-customer-id').html(opts).val(inv.customer_id);
 		}
 		showCustomers(customerNames);
@@ -108,17 +108,26 @@ function showInvoices() {
 					return;
 				}
 				$this.val('0');
-				var html='<table><tr><th>Customer Name</th><td>'
-					+'<input id="popup-customer-name"/></td></tr></table>';
+				var html='<table>'
+					+'<tr><th>Name</th><td><input id="popup-customer-name"/></td></tr>'
+					+'<tr><th>Email</th><td><input id="popup-customer-email"/></td></tr>'
+					+'<tr><th>Phone</th><td><input id="popup-customer-phone"/></td></tr>'
+					+'<tr><th>Address</th><td><textarea id="popup-customer-address"/>'
+					+'</td></tr>'
+					+'</table>';
 				var $customerDialog=$(html).dialog({
 					'modal':true,
 					'close':function() {
 						$customerDialog.remove();
 					},
+					'width':'400px',
 					'buttons':{
 						'Create Customer':function() {
 							$.post('/php/create-customer.php', {
-								'name':$('#popup-customer-name').val()
+								'name':$('#popup-customer-name').val(),
+								'email':$('#popup-customer-email').val(),
+								'address':$('#popup-customer-address').val(),
+								'phone':$('#popup-customer-phone').val()
 							}, function(ret) {
 								if (ret.error) {
 									return alert(ret.error);
