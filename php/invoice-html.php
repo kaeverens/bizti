@@ -70,12 +70,12 @@ foreach ($products as $p) {
 	if (!isset($totals[$ps[$pid]['tax']])) {
 		$totals[$ps[$pid]['tax']]=0;
 	}
-	$ptotal=$p['quantity']*$ps[$pid]['price'];
+	$ptotal=$p['quantity']*$p['price'];
 	$totals[$ps[$pid]['tax']]+=$ptotal;
 	$total+=$ptotal;
 	$table.='<tr><td>'.$p['quantity'].'</td>'
 		.'<td>'.htmlspecialchars($ps[$pid]['name']).'</td>'
-		.'<td class="right">'.price($ps[$pid]['price']).'</td>'
+		.'<td class="right">'.price($p['price']).'</td>'
 		.'<td class="right">'.price($ptotal).'</td></tr>';
 }
 if ($inv['notes']) {
