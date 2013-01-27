@@ -41,7 +41,11 @@ if (!file_exists('../cache/'.$mainfile)
 	require_once 'Minifier.php';
 	foreach ($files as $file) {
 		$html.=(strpos($file, '.min.')===false)
-			?str_replace("'\n+'", '', JShrink\Minifier::minify(file_get_contents($file)))
+			?str_replace(
+				"'\n+'",
+				'',
+				JShrink\Minifier::minify(file_get_contents($file))
+			)
 			:file_get_contents($file);
 	}
 	file_put_contents(
