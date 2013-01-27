@@ -52,9 +52,9 @@ function showInvoices() {
 				.html('<span class="price">'+currency(owed)+'</span>&nbsp;');
 			$('<a href="#" class="add-payment'+cname+'">[pay]</a>')
 				.click(function() {
-					var amt=+$td.find('.price').text();
 					var $dialog=$('<table>'
-						+'<tr><th>Amount Paid</th><td><input type="number" value="'+amt+'"/></td></tr>'
+						+'<tr><th>Amount Paid</th>'
+						+'<td><input type="number" value="'+owed+'"/></td></tr>'
 						+'</table>')
 						.dialog({
 							'modal':'true',
