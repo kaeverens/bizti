@@ -9,7 +9,6 @@ header('Content-Type: text/json; charset=utf8');
 
 $start=(int)$_REQUEST['iDisplayStart'];
 $length=(int)$_REQUEST['iDisplayLength'];
-$search=$_REQUEST['sSearch'];
 $orderbyint=(int)$_REQUEST['iSortCol_0'];
 $orderdesc=$_REQUEST['sSortDir_0']=='asc'?'asc':'desc';
 
@@ -32,11 +31,34 @@ switch((int)$_REQUEST['iSortCol_0']) {
 	default:
 		$orderby='num';
 }
+$filters=array(
+	'invoices.user_id='.$user_id,
+	'customers.id=customer_id'
+);
+if ($_REQUEST['sSearch_0']) { // invoice number
+	$filters[]='num='.((int)$_REQUEST['sSearch_0']);
+}
+if ($_REQUEST['sSearch_1']) { // customer name
+	$filters[]='name like "%'.addslashes($_REQUEST['sSearch_1']).'%"';
+}
+if ($_REQUEST['sSearch_2']) { // date
+	$filters[]='cdate="'.addslashes($_REQUEST['sSearch_0']).'"';
+}
+if ($_REQUEST['sSearch_3']) { // total
+	$filters[]='invoices.total='.((float)$_REQUEST['sSearch_3']);
+}
+if ($_REQUEST['sSearch_4']) { // paid
+	$filters[]='invoices.paid='.((float)$_REQUEST['sSearch_4']);
+}
+if ($_REQUEST['sSearch_5']) { // owing
+	$filters[]='owing='.((float)$_REQUEST['sSearch_5']);
+}
 
-$sql='select id,num, customer_id,cdate,total,paid,(total-paid) as owing'
+$sql='select invoices.id as id, num, customer_id, cdate, invoices.total'
+	.', invoices.paid,(invoices.total-invoices.paid) as owing, name'
 	.', datediff(now(), cdate) as date_diff'
-	.' from invoices'
-	.' where user_id='.$user_id.' order by '.$orderby.' '.$orderdesc
+	.' from invoices, customers'
+	.' where '.join(' and ', $filters).' order by '.$orderby.' '.$orderdesc
 	.' limit '.$start.', '.$length;
 
 $result=array();

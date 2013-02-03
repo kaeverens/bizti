@@ -14,7 +14,13 @@ function showInvoices() {
 	}
 	// { form
 	var $wrapper=$('#invoices').empty();
-	var html='<table><thead><tr><th>ID</th><th>Num</th>'
+	var html='<table><thead>'
+		+'<tr title="search" class="search"><td></td>'
+		+'<td><input type="number"/></td><td><input/></td>'
+		+'<td><input type="date"/></td><td><input type="number"/></td>'
+		+'<td><input type="number"/></td><td><input type="number"/></td>'
+		+'<td>&nbsp;</td><td>&nbsp;</td></tr>'
+		+'<tr><th>ID</th><th>Num</th>'
 		+'<th>Customer</th><th>Date</th>'
 		+'<th>Total</th><th>Paid</th>'
 		+'<th>Owing</th><th>Age</th><th>Actions</th></tr></thead>'
@@ -137,6 +143,11 @@ function showInvoices() {
 			fillInCustomerNames(customerNames);
 		}
 	});
+	var $searchInputs=$('#invoices .dataTable .search input');
+	var searchFunc=function() {
+		$invoicesTable.fnFilter(this.value, $searchInputs.index(this) );
+	};
+	$searchInputs.change(searchFunc);
 	// { add invoice button
 	var $addInvoice=$(
 		'<button id="invoice-add">Create Invoice</button>'

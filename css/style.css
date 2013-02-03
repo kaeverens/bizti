@@ -979,3 +979,9 @@ ul.no-bullets{
 .uploadify>object{
 	z-index:9999 !important;
 }
+.search input{
+	width:100%;
+}
+.search td{
+	padding:0 !important;
+}
