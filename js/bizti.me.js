@@ -78,11 +78,11 @@ $(function() {
 	// }
 	// { main page layout
 	var html='<div><ul>'
-		+'<li><a href="#invoices">Invoices</a></li>'
-		+'<li><a href="#customers">Customers</a></li>'
-		+'<li><a href="#products">Products</a></li>'
-		+'<li><a href="#payments">Payments</a></li>'
-		+'<li><a href="#profile">Your&nbsp;Profile</a></li>'
+		+'<li><a href="#invoices" id="invoices-tab">Invoices</a></li>'
+		+'<li><a href="#customers" id="customers-tab">Customers</a></li>'
+		+'<li><a href="#products" id="products-tab">Products</a></li>'
+		+'<li><a href="#payments" id="payments-tab">Payments</a></li>'
+		+'<li><a href="#profile" id="profile-tab">Your&nbsp;Profile</a></li>'
 		+'</ul>'
 		+'<div id="invoices"/>'
 		+'<div id="customers"/>'

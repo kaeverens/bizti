@@ -70,8 +70,8 @@ $result['iTotalRecords']=dbOne(
 );
 $filter='';
 $result['iTotalDisplayRecords']=dbOne(
-	'select count(id) as ids from invoices'
-	.' where user_id='.$user_id.$filter,
+	'select count(invoices.id) as ids from invoices, customers'
+	.' where '.join(' and ', $filters),
 	'ids'
 );
 $arr=array();
