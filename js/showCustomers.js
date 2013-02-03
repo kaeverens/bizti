@@ -60,7 +60,18 @@ function showCustomers() {
 		'bProcessing':true,
 		'bServerSide':true,
 		'fnRowCallback':function(nRow, aData, iDisplayIndex) {
+			// { number of invoices
 			aData[2]=+aData[2];
+			$('<a href="#" style="display:block">'+aData[2]+'</a>')
+				.click(function() {
+					var custName=$(this).closest('tr').find('td:first-child').text();
+					$('#invoices-tab').click();
+					$('#invoices .dataTable .search td:nth-child(2) input')
+						.val(custName).change();
+				})
+				.appendTo($('td:nth-child(2)', nRow).empty());
+			// }
+			// { total due
 			if (aData[3]===null) {
 				aData[3]='0';
 			}
@@ -69,8 +80,11 @@ function showCustomers() {
 			if (aData[4]===null) {
 				aData[4]='0';
 			}
+			// }
+			// { amt owed
 			aData[4]=+aData[4];
 			$('td:nth-child(4)', nRow).addClass('price').html(currency(aData[4]));
+			// }
 			// { actions
 			var $actions=$('td:nth-child(5)', nRow).empty();
 			// { edit
