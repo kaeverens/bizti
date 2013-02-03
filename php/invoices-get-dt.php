@@ -42,7 +42,7 @@ if ($_REQUEST['sSearch_1']) { // customer name
 	$filters[]='name like "%'.addslashes($_REQUEST['sSearch_1']).'%"';
 }
 if ($_REQUEST['sSearch_2']) { // date
-	$filters[]='cdate="'.addslashes($_REQUEST['sSearch_0']).'"';
+	$filters[]='cdate="'.addslashes($_REQUEST['sSearch_2']).'"';
 }
 if ($_REQUEST['sSearch_3']) { // total
 	$filters[]='invoices.total='.((float)$_REQUEST['sSearch_3']);

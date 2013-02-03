@@ -981,6 +981,8 @@ ul.no-bullets{
 }
 .search input{
 	width:100%;
+	background:#eee;
+	color:#aaa;
 }
 .search td{
 	padding:0 !important;
