@@ -26,7 +26,7 @@ function showInvoices() {
 		+'<th>Owing</th><th>Age</th><th>Actions</th></tr></thead>'
 		+'<tbody/></table>';
 	// }
-	var $invoicesTable=$(html).appendTo($wrapper).dataTable({
+	bizti.invoicesTable=$(html).appendTo($wrapper).dataTable({
 		'bJQueryUI':true,
 		'aaSorting':[[1, 'desc']],
 		'sAjaxSource':'/php/invoices-get-dt.php',
@@ -80,7 +80,7 @@ function showInvoices() {
 											if (ret.error) {
 												return alert(ret.error);
 											}
-											$invoicesTable.fnDraw(1);
+											bizti.invoicesTable.fnDraw(1);
 											$dialog.remove();
 										}
 									);
@@ -145,7 +145,7 @@ function showInvoices() {
 	});
 	var $searchInputs=$('#invoices .dataTable .search input');
 	var searchFunc=function() {
-		$invoicesTable.fnFilter(this.value, $searchInputs.index(this) );
+		bizti.invoicesTable.fnFilter(this.value, $searchInputs.index(this) );
 	};
 	$searchInputs.change(searchFunc);
 	// { add invoice button

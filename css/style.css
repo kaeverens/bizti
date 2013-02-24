@@ -878,7 +878,7 @@ body {
 	width:80px; 
 }
 /* { datatable header buttons */
-#invoice-add, #customer-add, #product-add, #invoices-import{
+#customer-add, #invoice-add, #invoices-import, #product-add, #task-add{
 	padding-left:32px;
 	margin:0 8px 3px 0;
 	float:left; 
@@ -894,7 +894,10 @@ body {
 	background:url(/images/import-24x24.png) no-repeat 5px center;
 }
 #product-add{
-	background:url(/images/product-24.png) no-repeat 5px center;
+	background:url(/images/product-24x24.png) no-repeat 5px center;
+}
+#task-add{
+	background:url(/images/task-24x24.png) no-repeat 5px center;
 }
 /* } */
 input[type="datepicker"]{
@@ -962,7 +965,7 @@ textarea{
 .faded{
 	color:#ddd;
 }
-#main-wrapper>div>ul>li:nth-child(5){
+#tab-profile{
 	float:right;
 }
 th span{
@@ -986,4 +989,36 @@ ul.no-bullets{
 }
 .search td{
 	padding:0 !important;
+}
+#task-notes{
+	width:100%;
+	height:100%;
+}
+.portlet{
+	border:1px solid #1c1c1c;
+	border-radius:5px;
+	display:inline-block;
+	margin:5px;
+	position:relative;
+	background:#1c1c1c;
+}
+.portlet h3{
+	color:#fff;
+	margin:0;
+	padding:0;
+	font-size:10px;
+	line-height:24px;
+}
+.portlet .body{
+	position:absolute;
+	left:0;
+	right:0;
+	top:24px;
+	bottom:0;
+	overflow:auto;
+	border-radius:5px;
+	background:#fff;
+}
+.currency{
+	text-align:right;
 }

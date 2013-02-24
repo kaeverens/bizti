@@ -45,7 +45,7 @@ showInvoices.form=function(inv) {
 									function() {
 										$del.remove();
 										$dialog.remove();
-										$invoicesTable.fnDraw(1);
+										bizti.invoicesTable.fnDraw(1);
 									}
 								);
 							},
@@ -83,7 +83,7 @@ showInvoices.form=function(inv) {
 						return alert(ret.error);
 					}
 					$dialog.remove();
-					$invoicesTable.fnDraw(1);
+					bizti.invoicesTable.fnDraw(1);
 				});
 			}
 		}
