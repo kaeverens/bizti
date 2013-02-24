@@ -31,7 +31,7 @@ if ($id) {
 			.' where id='.$customer_id
 		);
 		dbQuery(
-			'update customers set num_invoices=num_invoices-1, total=total-'.$total
+			'update customers set num_invoices=num_invoices-1, total=total-'.$oldTotal
 			.' where id='.$oldCid
 		);
 	}

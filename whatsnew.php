@@ -8,6 +8,11 @@ require_once 'html/header.html';
 	<h3>February</h3>
 	<ul>
 		<li>
+			<h4>24</h4>
+			<p>Tasks section added.</p>
+			<p>Dashboard created.</p>
+		</li>
+		<li>
 			<h4>03</h4>
 			<p>Add Search to invoices.</p>
 			<p>in Customers, if the number of invoices is clicked, you are now brough to the Invoices tab with the clicked customer filtered.</p>

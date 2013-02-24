@@ -52,7 +52,7 @@ function showDashboard() {
 			var html='<table>';
 			for (var i=0;i<ret.length;++i) {
 				html+='<tr><td>'+ret[i].name+'</td>'
-					+'<td class="currency">€'+(+ret[i].amt).toFixed(2)+'</td></tr>';
+					+'<td class="currency">'+currency(ret[i].amt)+'</td></tr>';
 			}
 			html+='</table>';
 			$p.find('.body').html(html);
