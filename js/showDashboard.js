@@ -20,33 +20,37 @@ function showDashboard() {
 					}
 				];
 			}
-			$.each(ret, function(k, v) {
-				showPortlet(v);
+			$.each(ret, function(k, p) {
+				var html='<div style="width:'+p.width+'px;height:'+p.height+'px;"'
+					+' class="portlet">'
+					+'<h3>'+p.type+'</h3>'
+					+'<div class="body"/></div>';
+				var $portlet=$(html)
+					.appendTo($wrapper)
+					.resizable({
+						'maxWidth':750,
+						'minWidth':200,
+						'minHeight':120,
+						'stop':save
+					});
+				switch(p.type) {
+					case 'Outstanding Invoices':
+						return portletOutstandingInvoices($portlet);
+					case 'Tasks':
+						return portletTasks($portlet);
+					default:
+						console.log('unknown portlet: '+p.type);
+				}
 			});
+			$wrapper
+				.sortable({
+					'handle':'h3',
+					'stop':save,
+					'placeholder':'placeholder'
+				})
+				.disableSelection();
 		}
 	);
-	function showPortlet(p) {
-		var html='<div style="width:'+p.width+'px;height:'+p.height+'px;"'
-			+' class="portlet">'
-			+'<h3>'+p.type+'</h3>'
-			+'<div class="body"/></div>';
-		var $portlet=$(html)
-			.appendTo($wrapper)
-			.resizable({
-				'maxWidth':750,
-				'minWidth':200,
-				'minHeight':120,
-				'stop':save
-			});
-		switch(p.type) {
-			case 'Outstanding Invoices':
-				return portletOutstandingInvoices($portlet);
-			case 'Tasks':
-				return portletTasks($portlet);
-			default:
-				console.log('unknown portlet: '+p.type);
-		}
-	}
 	function portletOutstandingInvoices($p) {
 		$.post('/php/invoices-outstanding-get.php', function(ret) {
 			var html='<table>';
