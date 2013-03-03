@@ -48,7 +48,9 @@ showInvoiceForm=function(inv) {
 									function() {
 										$del.remove();
 										$dialog.remove();
-										bizti.invoicesTable.fnDraw(1);
+										if (bizti.invoicesTable) {
+											bizti.invoicesTable.fnDraw(1);
+										}
 									}
 								);
 							},
@@ -87,7 +89,9 @@ showInvoiceForm=function(inv) {
 						return alert(ret.error);
 					}
 					$dialog.remove();
-					bizti.invoicesTable.fnDraw(1);
+					if (bizti.invoicesTable) {
+						bizti.invoicesTable.fnDraw(1);
+					}
 				});
 			}
 		}
