@@ -63,7 +63,6 @@ function showProfile() {
 		$wrapper.find('button').click(function() {
 			var options=0;
 			$('#profile-options-wrapper input:checked').each(function(k, v) {
-				console.log($(this).attr('id'));
 				options+=Math.pow(2, +$(this).attr('id').replace(/.*\[(.*)\]/, '$1'));
 			});
 			$.post('/php/profile-edit.php', {

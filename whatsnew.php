@@ -5,6 +5,13 @@ require_once 'html/header.html';
 <h1>What's New</h1>
 <h2>2013</h2>
 <div class="year-data">
+	<h3>March</h3>
+	<ul>
+		<li>
+			<h4>03</h4>
+			<p>Invoices can now be marked as Quote or Invoice. Seperate templates for each as well.</p>
+		</li>
+	</ul>
 	<h3>February</h3>
 	<ul>
 		<li>

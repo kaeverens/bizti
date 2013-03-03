@@ -1,5 +1,5 @@
 <?php
-$mainfile='showInvoices.form';
+$mainfile='showInvoiceForm';
 $files=array(
 	$mainfile
 );

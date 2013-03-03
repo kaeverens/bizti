@@ -1,10 +1,4 @@
 function showInvoices() {
-	function form(inv) {
-		$.getScript('/js/showInvoices.form.php', function() {
-			form=showInvoices.form;
-			form(inv);
-		});
-	}
 	function fillInCustomerNames(ret) {
 		customerNames=ret;
 		for (var i=0;i<customerNames.length;++i) {
@@ -121,7 +115,7 @@ function showInvoices() {
 						{
 							'iid':aData[0]
 						},
-						form
+						showInvoiceForm
 					);
 				});
 			$actions.append($edit);
@@ -153,7 +147,7 @@ function showInvoices() {
 		'<button id="invoice-add">Create Invoice</button>'
 	)
 		.click(function() {
-			form({
+			showInvoiceForm({
 				'customer_id':0,
 				'date':(new Date).toYMD(),
 				'notes':'',

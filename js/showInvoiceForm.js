@@ -1,4 +1,4 @@
-showInvoices.form=function(inv) {
+showInvoiceForm=function(inv) {
 	// { form layout
 	var html='<div><table style="width:100%"><tr>'
 		+'<th>Customer</th><td><select id="dialog-customer-id"/></td>'

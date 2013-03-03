@@ -57,14 +57,21 @@ function getCustomerName(id) {
 }
 $(function() {
 	var functionStubs=[
-		'showCustomers', 'showInvoices', 'showPayments', 'showProducts',
-		'showProfile', 'invoicesImport', 'showTasks', 'showDashboard'
+		'invoicesImport'
+		, 'showCustomers'
+		, 'showDashboard'
+		, 'showInvoiceForm'
+		, 'showInvoices'
+		, 'showPayments'
+		, 'showProducts'
+		, 'showProfile'
+		, 'showTasks'
 	];
 	for (var i=0;i<functionStubs.length;++i) {
 		window[functionStubs[i]]=(function(fn) {
-			return function() {
+			return function(params) {
 				$.cachedScript('/js/'+fn+'.php').done(function() {
-					window[fn]();
+					window[fn](params);
 				});
 			}
 		})(functionStubs[i]);
