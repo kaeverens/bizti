@@ -10,7 +10,7 @@ header('Content-Type: text/json; charset=utf8');
 $iid=(int)$_REQUEST['iid'];
 
 $inv=dbRow(
-	'select id, num, customer_id, cdate, notes, products from invoices'
+	'select id, num, customer_id, cdate, notes, products, type from invoices'
 	.' where id='.$iid.' and user_id='.$user_id
 );
 

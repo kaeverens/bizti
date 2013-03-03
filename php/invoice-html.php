@@ -7,15 +7,16 @@ $inv=dbRow('select * from invoices where id='.$iid.' and user_id='.$user_id);
 if (!$inv) {
 	exit;
 }
+$invDesc=$inv['type']?'quote':'invoice';
 
 $profile=dbRow('select * from users where id='.$user_id);
 $meta=json_decode($profile['meta'], true);
 
-if (file_exists('../userdata/'.$user_id.'/invoice.html')) {
-	$template=file_get_contents('../userdata/'.$user_id.'/invoice.html');
+if (file_exists('../userdata/'.$user_id.'/'.$invDesc.'.html')) {
+	$template=file_get_contents('../userdata/'.$user_id.'/'.$invDesc.'.html');
 }
 else {
-	$template=file_get_contents('../html/invoice.html');
+	$template=file_get_contents('../html/'.$invDesc.'.html');
 }
 
 // { company
@@ -94,7 +95,7 @@ if ($total!=$inv['total']) {
 		}
 	}
 }
-$table.='<tr><th colspan="3" class="right">Invoice Amount</th>'
+$table.='<tr><th colspan="3" class="right">'.ucfirst($invDesc).' Amount</th>'
 	.'<th class="right">'.price($inv['total']).'</th></tr>';
 $table.='</tbody></table>';
 // }

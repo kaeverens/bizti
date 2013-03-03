@@ -12,6 +12,7 @@ $customer_id=(int)$_REQUEST['customer_id'];
 $cdate=$_REQUEST['cdate'];
 $products=$_REQUEST['products'];
 $id=(int)$_REQUEST['id'];
+$type=(int)$_REQUEST['type'];
 
 require_once 'invoice-calculate-totals.php';
 list($total, $tax_total)=Invoice_calculateTotals($products);
@@ -20,6 +21,7 @@ $sql='invoices set customer_id='.$customer_id.', cdate="'.addslashes($cdate).'"'
 	.', products="'.addslashes(json_encode($products)).'"'
 	.', num='.((int)$_REQUEST['num'])
 	.', tax='.$tax_total
+	.', type='.$type
 	.', user_id='.$user_id;
 if ($id) {
 	$inv=dbRow('select customer_id, total from invoices where id='.$id);
