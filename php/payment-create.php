@@ -25,10 +25,11 @@ dbQuery(
 dbQuery(
 	'update customers set paid=paid+'.$amt.' where id='.$inv['customer_id']
 );
+$owed=dbOne('select (total-paid) as owed from invoices where id='.$iid, 'owed');
 
 echo json_encode(
 	array(
 		'ok'=>1,
-		'sql1'=>$sql1
+		'owed'=>$owed
 	)
 );

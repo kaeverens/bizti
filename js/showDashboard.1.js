@@ -35,7 +35,8 @@ function showDashboard() {
 					});
 				switch(p.type) {
 					case 'Outstanding Invoices':
-						return portletOutstandingInvoices($portlet);
+						$portlet.attr('id', 'portlet-outstanding-invoices');
+						return portletOutstandingInvoices();
 					case 'Tasks':
 						return portletTasks($portlet);
 					default:
@@ -51,28 +52,6 @@ function showDashboard() {
 				.disableSelection();
 		}
 	);
-	function portletOutstandingInvoices($p) {
-		$.post('/php/invoices-outstanding-get.php', function(ret) {
-			var html='<table>';
-			for (var i=0;i<ret.length;++i) {
-				html+='<tr data-id="'+ret[i].id+'">'
-					+'<td class="invoice clickable">'+ret[i].name+'</td>'
-					+'<td class="currency">'+currency(ret[i].amt)+'</td></tr>';
-			}
-			html+='</table>';
-			$p.find('.body').html(html);
-			$p.find('.invoice').click(function() {
-				var id=+$(this).closest('tr').data('id');
-				$.post(
-					'/php/invoice-get.php',
-					{
-						'iid':id
-					},
-					showInvoiceForm
-				);
-			});
-		});
-	}
 	function portletTasks($p) {
 		$.post('/php/tasks-portlet-get.php', function(ret) {
 			var html='<table>';

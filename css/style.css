@@ -1036,3 +1036,6 @@ ul.no-bullets{
 .clickable{
 	cursor:pointer;
 }
+.clickable:hover{
+	text-decoration:underline;
+}

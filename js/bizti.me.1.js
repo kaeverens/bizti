@@ -57,7 +57,9 @@ function getCustomerName(id) {
 }
 $(function() {
 	var functionStubs=[
-		'invoicesImport'
+		'invoicePay'
+		, 'invoicesImport'
+		, 'portletOutstandingInvoices'
 		, 'showCustomers'
 		, 'showDashboard'
 		, 'showInvoiceForm'
@@ -70,8 +72,9 @@ $(function() {
 	for (var i=0;i<functionStubs.length;++i) {
 		window[functionStubs[i]]=(function(fn) {
 			return function(params) {
+				var that=this;
 				$.cachedScript('/js/'+fn+'.php').done(function() {
-					window[fn](params);
+					window[fn].apply(that, [params]);
 				});
 			}
 		})(functionStubs[i]);
