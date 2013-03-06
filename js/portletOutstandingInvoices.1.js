@@ -1,6 +1,6 @@
 function portletOutstandingInvoices() {
-	var $p=$('#portlet-outstanding-invoices');
 	$.post('/php/invoices-outstanding-get.php', function(ret) {
+		var $p=$('#portlet-outstanding-invoices');
 		var html='<table>';
 		for (var i=0;i<ret.length;++i) {
 			html+='<tr data-id="'+ret[i].id+'">'
@@ -22,6 +22,7 @@ function portletOutstandingInvoices() {
 				},
 				showInvoiceForm
 			);
+			return false;
 		});
 	});
 }

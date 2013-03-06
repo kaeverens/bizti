@@ -11,5 +11,6 @@ $sql='select cdate, invoices.id as id, name, num'
 	.', (invoices.total-invoices.paid) as amt'
 	.' from invoices, customers'
 	.' where customers.id=customer_id and (invoices.total-invoices.paid)>0.01'
+	.' and type=0'
 	.' and invoices.user_id='.$user_id.' order by amt desc';
 echo json_encode(dbAll($sql));
