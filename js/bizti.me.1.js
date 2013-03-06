@@ -60,6 +60,7 @@ $(function() {
 		'invoicePay'
 		, 'invoicesImport'
 		, 'portletOutstandingInvoices'
+		, 'portletTasks'
 		, 'showCustomers'
 		, 'showDashboard'
 		, 'showInvoiceForm'
@@ -68,6 +69,7 @@ $(function() {
 		, 'showProducts'
 		, 'showProfile'
 		, 'showTasks'
+		, 'taskEdit'
 	];
 	for (var i=0;i<functionStubs.length;++i) {
 		window[functionStubs[i]]=(function(fn) {

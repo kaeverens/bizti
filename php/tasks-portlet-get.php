@@ -7,7 +7,7 @@ if (!isset($_SESSION['userdata']['id'])) {
 $user_id=(int)$_SESSION['userdata']['id'];
 header('Content-Type: text/json; charset=utf8');
 
-$sql='select name, description'
+$sql='select tasks.id id, name, description'
 	.' from tasks'
 	.' left join customers on customers.id=customer_id'
 	.' where status<1'

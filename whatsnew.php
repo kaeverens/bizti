@@ -9,8 +9,9 @@ require_once 'html/header.html';
 	<ul>
 		<li>
 			<h4>03</h4>
-			<p>Invoices can now be marked as Quote or Invoice. Seperate templates for each as well.</p>
-			<p>You can edit an invoice by clicking it in the front-page dashboard.</p>
+			<p>Invoices can now be marked as Quote or Invoice. Separate templates for each as well.</p>
+			<p>You can edit an invoice by clicking it in the dashboard.</p>
+			<p>You can pay an invoice from the dashboard.</p>
 		</li>
 	</ul>
 	<h3>February</h3>

@@ -35,9 +35,11 @@ function showDashboard() {
 					});
 				switch(p.type) {
 					case 'Outstanding Invoices':
-						return portletOutstandingInvoices($portlet);
+						$portlet.attr('id', 'portlet-outstanding-invoices');
+						return portletOutstandingInvoices();
 					case 'Tasks':
-						return portletTasks($portlet);
+						$portlet.attr('id', 'portlet-tasks');
+						return portletTasks();
 					default:
 						console.log('unknown portlet: '+p.type);
 				}
@@ -51,29 +53,6 @@ function showDashboard() {
 				.disableSelection();
 		}
 	);
-	function portletOutstandingInvoices($p) {
-		$.post('/php/invoices-outstanding-get.php', function(ret) {
-			var html='<table>';
-			for (var i=0;i<ret.length;++i) {
-				html+='<tr><td>'+ret[i].name+'</td>'
-					+'<td class="currency">'+currency(ret[i].amt)+'</td></tr>';
-			}
-			html+='</table>';
-			$p.find('.body').html(html);
-		});
-	}
-	function portletTasks($p) {
-		$.post('/php/tasks-portlet-get.php', function(ret) {
-			var html='<table>';
-			for (var i=0;i<ret.length;++i) {
-				var name=ret[i].name||'';
-				html+='<tr><td>'+ret[i].description+'</td>'
-					+'<td>'+name+'</td></tr>';
-			}
-			html+='</table>';
-			$p.find('.body').html(html);
-		});
-	}
 	function save() {
 		var $portlets=$wrapper.find('>div');
 		var portlets=[];

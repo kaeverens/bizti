@@ -50,39 +50,9 @@ function showInvoices() {
 			// { owing
 			var $td=$('td:nth-child(6)', nRow).addClass('price')
 				.html('<span class="price">'+currency(owed)+'</span>&nbsp;');
-			$('<a href="#" class="add-payment'+cname+'">[pay]</a>')
-				.click(function() {
-					var $dialog=$('<table>'
-						+'<tr><th>Amount Paid</th>'
-						+'<td><input type="number" value="'+owed+'"/></td></tr>'
-						+'</table>')
-						.dialog({
-							'modal':'true',
-							'title':'Record a Payment',
-							'close':function() {
-								$(this).remove();
-							},
-							'buttons':{
-								'Save':function() {
-									$.post(
-										'/php/payment-create.php',
-										{
-											'iid':aData[0],
-											'amt':$dialog.find('input').val()
-										},
-										function(ret) {
-											if (ret.error) {
-												return alert(ret.error);
-											}
-											bizti.invoicesTable.fnDraw(1);
-											$dialog.remove();
-										}
-									);
-								}
-							}
-						});
-					return false;
-				})
+			$('<a href="#" data-iid="'+aData[0]+'" data-owed="'+owed+'"'
+				+' class="add-payment'+cname+'">[pay]</a>')
+				.click(invoicePay)
 				.appendTo($td);
 			// }
 			// { age

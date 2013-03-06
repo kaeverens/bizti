@@ -1036,9 +1036,3 @@ ul.no-bullets{
 	position:relative;
 	vertical-align:top;
 }
-.clickable{
-	cursor:pointer;
-}
-.clickable:hover{
-	text-decoration:underline;
-}

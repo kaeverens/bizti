@@ -38,7 +38,8 @@ function showDashboard() {
 						$portlet.attr('id', 'portlet-outstanding-invoices');
 						return portletOutstandingInvoices();
 					case 'Tasks':
-						return portletTasks($portlet);
+						$portlet.attr('id', 'portlet-tasks');
+						return portletTasks();
 					default:
 						console.log('unknown portlet: '+p.type);
 				}
@@ -52,18 +53,6 @@ function showDashboard() {
 				.disableSelection();
 		}
 	);
-	function portletTasks($p) {
-		$.post('/php/tasks-portlet-get.php', function(ret) {
-			var html='<table>';
-			for (var i=0;i<ret.length;++i) {
-				var name=ret[i].name||'';
-				html+='<tr><td>'+ret[i].description+'</td>'
-					+'<td>'+name+'</td></tr>';
-			}
-			html+='</table>';
-			$p.find('.body').html(html);
-		});
-	}
 	function save() {
 		var $portlets=$wrapper.find('>div');
 		var portlets=[];
