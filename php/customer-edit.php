@@ -44,4 +44,12 @@ else {
 }
 dbQuery($sql);
 
-echo json_encode(array('ok'=>1));
+$rs=dbAll(
+	'select id,name from customers where user_id='.$user_id.' order by name'
+);
+echo json_encode(
+	array(
+		'ok'=>1,
+		'customerNames'=>$rs
+	)
+);

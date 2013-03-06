@@ -75,7 +75,9 @@ $(function() {
 		window[functionStubs[i]]=(function(fn) {
 			return function(params) {
 				var that=this;
+				var $overlay=$.ui.dialog.overlay.create();
 				$.cachedScript('/js/'+fn+'.php').done(function() {
+					$overlay.remove();
 					window[fn].apply(that, [params]);
 				});
 			}

@@ -29,6 +29,9 @@ function showCustomers() {
 						},
 						function(ret) {
 							$dialog.remove();
+							console.log(window.customerNames);
+							window.customerNames=ret.customerNames;
+							console.log(window.customerNames);
 							$customersTable.fnDraw(1);
 						}
 					);
