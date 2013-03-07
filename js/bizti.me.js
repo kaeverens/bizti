@@ -68,6 +68,7 @@ $(function() {
 		, 'showPayments'
 		, 'showProducts'
 		, 'showProfile'
+		, 'showShares'
 		, 'showTasks'
 		, 'taskEdit'
 	];
@@ -98,12 +99,13 @@ $(function() {
 		+'<li><a href="#customers" id="customers-tab">Customers</a></li>'
 		+'<li><a href="#products" id="products-tab">Products</a></li>'
 		+'<li><a href="#payments" id="payments-tab">Payments</a></li>'
+		+'<li><a href="#shares" id="shares-tab">Shares</a></li>'
 		+'<li id="tab-profile"><a href="#profile" id="profile-tab">'
 		+'Your&nbsp;Profile</a></li>'
 		+'</ul>'
 		+'<div id="dashboard"/><div id="tasks"/><div id="invoices"/>'
 		+'<div id="customers"/><div id="products"/><div id="payments"/>'
-		+'<div id="profile"/>'
+		+'<div id="profile"/><div id="shares"/>'
 		+'</div>';
 	function switchMainTab(e, ui) {
 		switch (ui.panel===undefined?ui.newPanel.selector:ui.panel.selector) {
@@ -114,6 +116,7 @@ $(function() {
 			case '#products': return showProducts();
 			case '#profile': return showProfile();
 			case '#tasks': return showTasks();
+			case '#shares': return showShares();
 			default: return alert('huh?');
 		}
 	}

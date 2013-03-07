@@ -1,19 +1,17 @@
 <?php
-$user_id=(int)$_SESSION['userdata']['id'];
-
 $iid=(int)$_REQUEST['id'];
 
-$inv=dbRow('select * from invoices where id='.$iid.' and user_id='.$user_id);
+$inv=dbRow('select * from invoices where id='.$iid.' and user_id='.$uid);
 if (!$inv) {
 	exit;
 }
 $invDesc=$inv['type']?'quote':'invoice';
 
-$profile=dbRow('select * from users where id='.$user_id);
+$profile=dbRow('select * from users where id='.$uid);
 $meta=json_decode($profile['meta'], true);
 
-if (file_exists('../userdata/'.$user_id.'/'.$invDesc.'.html')) {
-	$template=file_get_contents('../userdata/'.$user_id.'/'.$invDesc.'.html');
+if (file_exists('../userdata/'.$uid.'/'.$invDesc.'.html')) {
+	$template=file_get_contents('../userdata/'.$uid.'/'.$invDesc.'.html');
 }
 else {
 	$template=file_get_contents('../html/'.$invDesc.'.html');
@@ -28,7 +26,7 @@ $template=str_replace('{{$company_email}}', $meta['company-email'], $template);
 // { customer
 $cust=dbRow(
 	'select * from customers'
-	.' where id='.$inv['customer_id'].' and user_id='.$user_id
+	.' where id='.$inv['customer_id'].' and user_id='.$uid
 );
 $template=str_replace('{{$customer_name}}', $cust['name'], $template);
 $cmeta=json_decode($cust['meta'], true);
@@ -43,7 +41,7 @@ function price($num) {
 
 $template=str_replace(
 	'{{$logo_url}}',
-	($imgsrc=='local'?$_SERVER['DOCUMENT_ROOT']:'').'/userdata/'.$user_id.'/logo.png',
+	($imgsrc=='local'?$_SERVER['DOCUMENT_ROOT']:'').'/userdata/'.$uid.'/logo.png',
 	$template
 );
 $template=str_replace('{{$invoice_number}}', $inv['num'], $template);
@@ -66,7 +64,7 @@ $total=0;
 foreach ($products as $p) {
 	$pid=(int)$p['product'];
 	if (!isset($ps[$pid])) {
-		$ps[$pid]=dbRow('select * from products where id='.$pid.' and user_id='.$user_id);
+		$ps[$pid]=dbRow('select * from products where id='.$pid.' and user_id='.$uid);
 	}
 	if (!isset($totals[$ps[$pid]['tax']])) {
 		$totals[$ps[$pid]['tax']]=0;

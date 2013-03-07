@@ -8,6 +8,12 @@ require_once 'html/header.html';
 	<h3>March</h3>
 	<ul>
 		<li>
+			<h4>06</h4>
+			<p>You can now add new tasks directly from the dashboard.</p>
+			<p>Outstanding Invoices portlet now only shows invoices, no quotes.</p>
+			<p>Fix issues <a href="https://github.com/kaeverens/bizti/issues/30">#30</a>, <a href="https://github.com/kaeverens/bizti/issues/31">#31</a>.</p>
+		</li>
+		<li>
 			<h4>03</h4>
 			<p>Invoices can now be marked as Quote or Invoice. Separate templates for each as well.</p>
 			<p>You can edit an invoice by clicking it in the dashboard.</p>

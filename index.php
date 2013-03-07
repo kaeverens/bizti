@@ -3,6 +3,10 @@
 require_once 'php/basics.php';
 echo file_get_contents('html/header.html');
 
+if (isset($_REQUEST['share'])) {
+	require_once 'php/index-share.php';
+}
+else {
 if (isset($_SESSION['userdata']['id'])) {
 	$user_id=$_SESSION['userdata']['id'];
 	echo '<script>window.userdata='.json_encode($_SESSION['userdata']).';'
@@ -52,6 +56,7 @@ else {
 	$ftime=filemtime('js/bizti.me.js');
 	echo '<script async="async"'
 		.' src="/j/'.$ftime.'/not-logged-in.php"></script>';
+}
 }
 
 echo file_get_contents('html/footer.html');

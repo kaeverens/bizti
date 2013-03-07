@@ -1026,7 +1026,12 @@ ul.no-bullets{
 .portlet .controls{
 	background:#99f;
 	border-radius:5px;
-	padding:2px 2px 4px 2px;
+	padding:2px 2px 3px 2px;
+	line-height:0;
+}
+.portlet .controls button{
+	font-size:.8em;
+	padding:2px 6px;
 }
 .currency{
 	text-align:right;
@@ -1041,7 +1046,7 @@ ul.no-bullets{
 	position:relative;
 	vertical-align:top;
 }
-tbody tr:first-child td{
+tbody tr:first-child th, tbody tr:first-child td{
 	border-top:0;
 }
 button{
