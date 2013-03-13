@@ -8,6 +8,9 @@ require_once 'html/header.html';
 	<h3>March</h3>
 	<ul>
 		<li>
+			<h4>07</h4>
+			<p>Added new Shares tab, which lets you give people access to some of your data. For example, this lets you give your accountant access to all your invoices, but nothing else.</p>
+		<li>
 			<h4>06</h4>
 			<p>You can now add new tasks directly from the dashboard.</p>
 			<p>Outstanding Invoices portlet now only shows invoices, no quotes.</p>

@@ -29,48 +29,41 @@
 				<td><img src="{{$logo_url}}" style="max-height:3cm;"/></td>
 				<td><h2 style="text-align:right">Quote</h2></td>
 			</tr>
-			<tr>
-				<td colspan="2">
-					<hr style="border:0;border-bottom:#a0a0a0 1px solid;"/>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<table class="block">
-						<thead>
-							<tr><th>Biller:</th><td>{{$company_name}}</td></tr>
-						</thead>
-						<tbody>
-							<tr><th>Address:</th><td>{{$company_address}}</td></tr>
-							<tr><th>Phone:</th><td>{{$company_phone}}</td></tr>
-							<tr><th>Email:</th><td>{{$company_email}}</td></tr>
-						</tbody>
-					</table>
-					<table class="block">
-						<thead>
-							<tr><th>Customer:</th><td>{{$customer_name}}</td></tr>
-						</thead>
-						<tbody>
-							<tr><th>Address:</th><td>{{$customer_address}}</td></tr>
-							<tr><th>Phone:</th><td>{{$customer_phone}}</td></tr>
-							<tr><th>Email:</th><td>{{$customer_email}}</td></tr>
-						</tbody>
-					</table>
-				</td>
-				<td>
-					<table style="float:right" class="block">
-						<thead>
-							<tr><th colspan="2">Quote Summary</th></tr>
-						</thead>
-						<tbody>
-							<tr><th>Quote Number:</th><td class="right">{{$invoice_number}}</td></tr>
-							<tr><th>Quote Date:</th><td class="right">{{$invoice_date}}</td></tr>
-							<tr><th>Total:</th><td class="right">{{$invoice_total}}</td></tr>
-						</tbody>
-					</table>
-				</td>
-			</tr>
 		</table>
+		<hr style="border:0;border-bottom:#a0a0a0 1px solid;"/>
+		<table style="width:100%"><tr><td style="width:50%">
+		<table class="block">
+			<thead>
+				<tr><th>Biller:</th><td>{{$company_name}}</td></tr>
+			</thead>
+			<tbody>
+				<tr><th>Address:</th><td>{{$company_address}}</td></tr>
+				<tr><th>Phone:</th><td>{{$company_phone}}</td></tr>
+				<tr><th>Email:</th><td>{{$company_email}}</td></tr>
+			</tbody>
+		</table>
+		<table class="block">
+			<thead>
+				<tr><th>Customer:</th><td>{{$customer_name}}</td></tr>
+			</thead>
+			<tbody>
+				<tr><th>Address:</th><td>{{$customer_address}}</td></tr>
+				<tr><th>Phone:</th><td>{{$customer_phone}}</td></tr>
+				<tr><th>Email:</th><td>{{$customer_email}}</td></tr>
+			</tbody>
+		</table>
+		</td><td>
+		<table class="block">
+			<thead>
+				<tr><th colspan="2">Quote Summary</th></tr>
+			</thead>
+			<tbody>
+				<tr><th>Quote Number:</th><td class="right">{{$invoice_number}}</td></tr>
+				<tr><th>Quote Date:</th><td class="right">{{$invoice_date}}</td></tr>
+				<tr><th>Total:</th><td class="right">{{$invoice_total}}</td></tr>
+			</tbody>
+		</table>
+		</td></tr></table>
 		{{$invoice_table}}
 		<table style="width:100%" class="block">
 			<thead><tr><th>Payment Details</th></tr></thead>
