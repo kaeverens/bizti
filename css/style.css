@@ -1052,3 +1052,10 @@ tbody tr:first-child th, tbody tr:first-child td{
 button{
 	cursor:pointer;
 }
+.time.active{
+	color:#f00;
+	font-weight:bold;
+}
+.time.disabled{
+	color:#999;
+}

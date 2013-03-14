@@ -27,7 +27,8 @@ function showTasks() {
 			$('td:nth-child(3)', nRow).html(priorities[+aData[3]+1]);
 			$('td:nth-child(4)', nRow).html(statii[+aData[4]]);
 			// { counter
-			var $counter=$('<span> [<a href="#" class="counter">'+((aData[7]==1)?'stop':'start')+'</a>] </span>')
+			var startstop=aData[7]==1?'stop':'start';
+			var $counter=$('<span>[<a href="#" class="counter">'+startstop+'</a>]</span>')
 				.click(function(){
 					$.post(
 						'/php/task-counter.php',
@@ -51,14 +52,20 @@ function showTasks() {
 				if (ss < 10) ss = "0"+ss;
 				return hh+":"+mm+":"+ss;
 			}
-			$('td:nth-child(5)', nRow).html('<i class="time">'+((aData[6]=="0")?"00:00:00":format_t(aData[6]))+'</i>').append($counter);
+			var time=aData[6]=="0"?'00:00:00':format_t(aData[6]);
+			var timeClass=aData[6]=='0'?'time disabled':'time';
+			$('td:nth-child(5)', nRow)
+				.html('<i class="'+timeClass+'">'+time+'</i>')
+				.append($counter);
 			if(aData[7]==1){
 				counter.counts[aData[0]]=aData[6];
 				counter.rows[aData[0]]=$('td:nth-child(5)', nRow);
 				if(typeof(counter.interval)=='undefined'){
 					function update_t(){
 						for(var i in window.counter.counts){
-							$('.time',counter.rows[i]).html(format_t(counter.counts[i]++));
+							$('.time', counter.rows[i])
+								.addClass('active')
+								.html(format_t(counter.counts[i]++));
 						}
 					}
 					update_t();
