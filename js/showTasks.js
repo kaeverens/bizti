@@ -27,7 +27,7 @@ function showTasks() {
 			$('td:nth-child(3)', nRow).html(priorities[+aData[3]+1]);
 			$('td:nth-child(4)', nRow).html(statii[+aData[4]]);
 			// { counter
-			var $counter=$('<span>[<a href="#" class="counter">'+((aData[7]==1)?'stop':'start')+'</a>] </span>')
+			var $counter=$('<span> [<a href="#" class="counter">'+((aData[7]==1)?'stop':'start')+'</a>] </span>')
 				.click(function(){
 					$.post(
 						'/php/task-counter.php',
@@ -49,18 +49,20 @@ function showTasks() {
 				if (ss < 10) ss = "0"+ss;
 				return hh+":"+mm+":"+ss;
 			}
+			$('td:nth-child(5)', nRow).html('<i class="time">'+((aData[6]=="0")?"00:00:00":format_t(aData[6]))+'</i>').append($counter);
 			if(aData[7]==1){
-				if(typeof(counter.interval)=='undefined'){
-					counter.interval=setInterval(function(){
-						for(var i in window.counter.counts){
-							counter.rows[i].html(format_t(counter.counts[i]++));
-						}
-					},1000);
-				}
 				counter.counts[aData[0]]=aData[6];
 				counter.rows[aData[0]]=$('td:nth-child(5)', nRow);
+				if(typeof(counter.interval)=='undefined'){
+					function update_t(){
+						for(var i in window.counter.counts){
+							$('.time',counter.rows[i]).html(format_t(counter.counts[i]++));
+						}
+					}
+					update_t();
+					window.counter.interval=setInterval(update_t,1000);
+				}
 			}	
-			$('td:nth-child(5)', nRow).html((aData[6]=="0")?"00:00:00":format_t(aData[6]));
 			// }
 			// { edit
 			var $edit=$('<a href="#" class="edit">[edit]</a>')
@@ -73,7 +75,7 @@ function showTasks() {
 						taskEdit
 					);
 				});
-			$actions.append($counter).append($edit);
+			$actions.append($edit);
 			// }
 			// }
 			return nRow;
