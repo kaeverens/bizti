@@ -2,7 +2,7 @@
 require_once 'basics.php';
 /*
 mysql> describe tasks;
-+-------------+-------------+------+-----+---------+----------------+
++-------------+-------------+------+-----+-----------+----------------+
 | Field       | Type        | Null | Key | Default | Extra          |
 +-------------+-------------+------+-----+---------+----------------+
 | id          | int(11)     | NO   | PRI | NULL    | auto_increment |
@@ -13,6 +13,8 @@ mysql> describe tasks;
 | description | text        | YES  |     | NULL    |                |
 | priority    | int(11)     | YES  |     | 0       |                |
 | customer_id | int(11)     | YES  |     | 0       |                |
+| counter     | timestamp   | NO   |     | 0       |                |
+| active      | int(1)      | YES  |     | 0       |                |
 +-------------+-------------+------+-----+---------+----------------+
 */
 
