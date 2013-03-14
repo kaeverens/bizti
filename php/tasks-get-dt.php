@@ -18,7 +18,7 @@ $filters=array(
 	'tasks.user_id='.$user_id
 );
 
-$sql='select tasks.id as id, description, customer_id, priority, status, name'
+$sql='select tasks.id as id, description, customer_id, priority, status, name, UNIX_TIMESTAMP(counter), active'
 	.' from tasks'
 	.' left join customers on customers.id=customer_id'
 	.' where '.join(' and ', $filters)
@@ -41,9 +41,11 @@ $result['iTotalDisplayRecords']=dbOne(
 $arr=array();
 $rs=dbAll($sql);
 foreach ($rs as $r) {
+	$time=($r[ 'active' ]==1)?time()-$r['UNIX_TIMESTAMP(counter)']:$r['UNIX_TIMESTAMP(counter)'];
 	$row=array(
 		$r['id'], $r['description'], $r['name'], $r['priority']
-		, $r['status'], $r['customer_id']
+		, $r['status'], $r['customer_id'],
+		$time,$r[ 'active' ]
 	);
 	$arr[]=$row;
 }
