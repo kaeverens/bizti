@@ -138,6 +138,8 @@ CREATE TABLE `tasks` (
   `description` text,
   `priority` int(11) DEFAULT '0',
   `customer_id` int(11) DEFAULT '0',
+  `counter` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `active` int(1) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
