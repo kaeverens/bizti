@@ -32,12 +32,10 @@ $result['iTotalRecords']=dbOne(
 	.' where user_id='.$user_id,
 	'ids'
 );
-$filter='';
-$result['iTotalDisplayRecords']=dbOne(
-	'select count(tasks.id) as ids from tasks, customers'
-	.' where '.join(' and ', $filters),
-	'ids'
-);
+$sql2='select count(tasks.id) as ids from tasks'
+	.' where '.join(' and ', $filters);
+$result['iTotalDisplayRecords']=dbOne($sql2, 'ids');
+#echo $sql2; exit;
 $arr=array();
 $rs=dbAll($sql);
 foreach ($rs as $r) {

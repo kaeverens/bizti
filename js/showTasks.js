@@ -35,13 +35,15 @@ function showTasks() {
 							'id':aData[0],
 							'action':$('a',$(this)).html()
 						},
-						showTasks
+						function() {
+							bizti.tasksTable.fnDraw(1);
+						}
 					);
 				});
 			window.counter;
 			function format_t(seconds){
 				var date=new Date(seconds*1000);
-				var hh=date.getHours()-1;
+				var hh=date.getHours();
 				var mm=date.getMinutes();
 				var ss=date.getSeconds();
 				if (hh < 10) hh = "0"+hh;
