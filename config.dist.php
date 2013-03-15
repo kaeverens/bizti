@@ -1,4 +1,5 @@
 <?php
+$canonical_domain=''; // your site's domain name
 // { database
 $dbhost='localhost';
 $dbname='biztime';

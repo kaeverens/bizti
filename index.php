@@ -1,6 +1,13 @@
 <?php
 
 require_once 'php/basics.php';
+if (isset($canonical_domain) && $canonical_domain
+	&& $canonical_domain!=$_SERVER['HTTP_HOST']
+) {
+	$http=isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']?'https':'http';
+	header('Location: '.$http.'//'.$canonical_domain.'/');
+	exit;
+}
 echo file_get_contents('html/header.html');
 
 if (isset($_REQUEST['share'])) {
