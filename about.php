@@ -12,7 +12,7 @@ require_once 'html/header.html';
 	<p>What we've done is to make it all so simple that if you are in the middle of creating an invoice and realise you haven't yet created the product you want to add - you can do it right there and then within the form!</p>
 
 	<h2>Tasks application</h2>
-	<p>We are currently working on this one. We want to create a very simple tasks list which integrates naturally with the other applications that we have.</p>
+	<p>We are currently working on this one. We want to create a very simple tasks list which integrates naturally with the other applications that we have. At the moment, you can create tasks, and track time spent on those tasks.</p>
 
 	<h2>Who are we</h2>
 	<p><a href="http://kvsites.ie/">KV Sites</a> is a company based in Ireland that focuses on web development and website creation.</p>

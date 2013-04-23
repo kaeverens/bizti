@@ -8,6 +8,10 @@ require_once 'html/header.html';
 	<h3>March</h3>
 	<ul>
 		<li>
+			<h4>14</h4>
+			<p>Added time-tracking to tasks.</p>
+		</li>
+		<li>
 			<h4>07</h4>
 			<p>Added new Shares tab, which lets you give people access to some of your data. For example, this lets you give your accountant access to all your invoices, but nothing else.</p>
 		<li>

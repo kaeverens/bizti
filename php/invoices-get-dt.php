@@ -32,8 +32,7 @@ switch((int)$_REQUEST['iSortCol_0']) {
 		$orderby='num';
 }
 $filters=array(
-	'invoices.user_id='.$user_id,
-	'customers.id=customer_id'
+	'invoices.user_id='.$user_id
 );
 if ($_REQUEST['sSearch_0']) { // invoice number
 	$filters[]='num='.((int)$_REQUEST['sSearch_0']);
@@ -57,7 +56,7 @@ if ($_REQUEST['sSearch_5']) { // owing
 $sql='select invoices.id as id, num, customer_id, cdate, invoices.total'
 	.', invoices.paid,(invoices.total-invoices.paid) as owing, name'
 	.', datediff(now(), cdate) as date_diff'
-	.' from invoices, customers'
+	.' from invoices left join customers on customers.id=customer_id'
 	.' where '.join(' and ', $filters).' order by '.$orderby.' '.$orderdesc
 	.' limit '.$start.', '.$length;
 
