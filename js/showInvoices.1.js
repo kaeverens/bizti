@@ -87,18 +87,27 @@ function showInvoices() {
 						},
 						showInvoiceForm
 					);
+					return false;
 				});
 			$actions.append($edit);
 			// }
 			// { print
-			var print='&nbsp;<a href="/php/invoice-print.php?id='+aData[0]+'"'
-				+' target="_blank" class="print">[print]</a>';
-			$actions.append(print);
+			$actions.append('&nbsp;');
+			$('<a href="#">[print]</a>')
+				.click(function() {
+					window.open('/php/invoice-print.php?id='+aData[0]);
+					return false;
+				})
+				.appendTo($actions);
 			// }
 			// { pdf
-			var print='&nbsp;<a href="/php/invoice-pdf.php?id='+aData[0]+'"'
-				+' target="_blank" class="pdf">[pdf]</a>';
-			$actions.append(print);
+			$actions.append('&nbsp;');
+			$('<a href="#">[print]</a>')
+				.click(function() {
+					window.open('/php/invoice-pdf.php?id='+aData[0]);
+					return false;
+				})
+				.appendTo($actions);
 			// }
 			// }
 			return nRow;
