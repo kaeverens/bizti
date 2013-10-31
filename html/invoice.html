@@ -16,7 +16,6 @@
 			}
 			table.block{
 				margin-top:.5cm;
-				min-width:8cm;
 			}
 			.right{
 				text-align:right;
@@ -24,59 +23,59 @@
 		</style>
 	</head>
 	<body>
-		<table style="width:100%">
-			<tr>
-				<td><img src="{{$logo_url}}" style="max-height:3cm;"/></td>
-				<td><h2 style="text-align:right">Invoice</h2></td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<hr style="border:0;border-bottom:#a0a0a0 1px solid;"/>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<table class="block">
-						<thead>
-							<tr><th>Biller:</th><td>{{$company_name}}</td></tr>
-						</thead>
-						<tbody>
-							<tr><th>Address:</th><td>{{$company_address}}</td></tr>
-							<tr><th>Phone:</th><td>{{$company_phone}}</td></tr>
-							<tr><th>Email:</th><td>{{$company_email}}</td></tr>
-						</tbody>
-					</table>
-					<table class="block">
-						<thead>
-							<tr><th>Customer:</th><td>{{$customer_name}}</td></tr>
-						</thead>
-						<tbody>
-							<tr><th>Address:</th><td>{{$customer_address}}</td></tr>
-							<tr><th>Phone:</th><td>{{$customer_phone}}</td></tr>
-							<tr><th>Email:</th><td>{{$customer_email}}</td></tr>
-						</tbody>
-					</table>
-				</td>
-				<td>
-					<table style="float:right" class="block">
-						<thead>
-							<tr><th colspan="2">Invoice Summary</th></tr>
-						</thead>
-						<tbody>
-							<tr><th>Invoice Number:</th><td class="right">{{$invoice_number}}</td></tr>
-							<tr><th>Invoice Date:</th><td class="right">{{$invoice_date}}</td></tr>
-							<tr><th>Total:</th><td class="right">{{$invoice_total}}</td></tr>
-							<tr><th>Paid:</th><td class="right">{{$invoice_paid}}</td></tr>
-							<tr><th>Owing:</th><td class="right">{{$invoice_owing}}</td></tr>
-						</tbody>
-					</table>
-				</td>
-			</tr>
-		</table>
-		{{$invoice_table}}
-		<table style="width:100%" class="block">
-			<thead><tr><th>Payment Details</th></tr></thead>
-			<tbody><tr><td>{{$company_payment_details}}</td></tr></tbody>
-		</table>
+			<table style="width:100%">
+				<tr>
+					<td><img src="{{$logo_url}}" style="max-height:3cm;"/></td>
+					<td><h2 style="text-align:right">Invoice</h2></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<hr style="border:0;border-bottom:#a0a0a0 1px solid;"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<table class="block">
+							<thead>
+								<tr><th>Biller:</th><td>{{$company_name}}</td></tr>
+							</thead>
+							<tbody>
+								<tr><th>Address:</th><td>{{$company_address}}</td></tr>
+								<tr><th>Phone:</th><td>{{$company_phone}}</td></tr>
+								<tr><th>Email:</th><td>{{$company_email}}</td></tr>
+							</tbody>
+						</table>
+						<table class="block">
+							<thead>
+								<tr><th>Customer:</th><td>{{$customer_name}}</td></tr>
+							</thead>
+							<tbody>
+								<tr><th>Address:</th><td>{{$customer_address}}</td></tr>
+								<tr><th>Phone:</th><td>{{$customer_phone}}</td></tr>
+								<tr><th>Email:</th><td>{{$customer_email}}</td></tr>
+							</tbody>
+						</table>
+					</td>
+					<td>
+						<table style="float:right" class="block">
+							<thead>
+								<tr><th colspan="2">Invoice Summary</th></tr>
+							</thead>
+							<tbody>
+								<tr><th>Invoice Number:</th><td class="right">{{$invoice_number}}</td></tr>
+								<tr><th>Invoice Date:</th><td class="right">{{$invoice_date}}</td></tr>
+								<tr><th>Total:</th><td class="right">{{$invoice_total}}</td></tr>
+								<tr><th>Paid:</th><td class="right">{{$invoice_paid}}</td></tr>
+								<tr><th>Owing:</th><td class="right">{{$invoice_owing}}</td></tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</table>
+			{{$invoice_table}}
+			<table style="width:100%" class="block">
+				<thead><tr><th>Payment Details</th></tr></thead>
+				<tbody><tr><td>{{$company_payment_details}}</td></tr></tbody>
+			</table>
 	</body>
 </html>

@@ -102,7 +102,7 @@ function showInvoices() {
 			// }
 			// { pdf
 			$actions.append('&nbsp;');
-			$('<a href="#">[print]</a>')
+			$('<a href="#">[pdf]</a>')
 				.click(function() {
 					window.open('/php/invoice-pdf.php?id='+aData[0]);
 					return false;

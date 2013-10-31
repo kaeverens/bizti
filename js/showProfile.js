@@ -3,17 +3,21 @@ function showProfile() {
 		'logonum':0
 	};
 	var $wrapper=$('#profile').empty();
-	var html='<table><tr><th>Company Name</th><td><input id="profile-name"/></td>'
-		+'<th>Currency</th><td><input id="profile-currency"/></td></tr>'
-		+'<tr><th>Company Email</th><td><input id="profile-email" type="email"/></td>'
-		+'<th rowspan="6">Logo</th><td rowspan="5">'
+	var html='<table>'
+		+'<tr><th>Currency</th><td><input id="profile-currency"/></td>'
+		+'<th rowspan="5">Logo</th><td rowspan="5">'
 		+'<input id="profile-logo-button" type="file"/>'
 		+'<div id="profile-logo-img"/></td></tr>'
+		+'<tr><th>Company Name</th><td><input id="profile-name"/></td></tr>'
+		+'<tr><th>Company Email</th><td><input id="profile-email" type="email"/></td>'
 		+'<tr><th>Company Phone</th><td><input id="profile-phone"/></td></tr>'
 		+'<tr><th>Company Address<span>shown at top of invoices</span></th>'
 		+'<td><textarea id="profile-address"/></td></tr>'
 		+'<tr><th>Payment Details<span>shown at bottom of invoices</span></th>'
-		+'<td><textarea id="profile-payment"/></td></tr>'
+		+'<td><textarea id="profile-payment"/></td>'
+		+'<th>Options</th><td><ul id="profile-options-wrapper" class="no-bullets">'
+		+'<li><input type="checkbox" id="profile-options[0]"/>use purchase orders</li>'
+		+'</ul></td></tr>'
 		+'<tr><th><button>Save</button></th><td/></tr>'
 		+'</table>';
 	$wrapper.append(html);
@@ -57,13 +61,19 @@ function showProfile() {
 		$('#profile-payment').val(ret['payment-details']);
 		$('#profile-currency').val(ret['currency-symbol']);
 		$wrapper.find('button').click(function() {
+			var options=0;
+			$('#profile-options-wrapper input:checked').each(function(k, v) {
+				options+=Math.pow(2, +$(this).attr('id').replace(/.*\[(.*)\]/, '$1'));
+			});
+			userdata.currency=$('#profile-currency').val();
 			$.post('/php/profile-edit.php', {
 				'company-name':$('#profile-name').val(),
 				'company-phone':$('#profile-phone').val(),
 				'company-email':$('#profile-email').val(),
 				'company-address':$('#profile-address').val(),
-				'currency-symbol':$('#profile-currency').val(),
-				'payment-details':$('#profile-payment').val()
+				'currency-symbol':userdata.currency,
+				'payment-details':$('#profile-payment').val(),
+				'options':options
 			}, function(ret) {
 				alert('saved');
 			});

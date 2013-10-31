@@ -17,10 +17,12 @@ $meta['company-email']=$_REQUEST['company-email'];
 $meta['company-address']=$_REQUEST['company-address'];
 $meta['payment-details']=$_REQUEST['payment-details'];
 $options=isset($_REQUEST['options'])?(int)$_REQUEST['options']:0;
+$currency=$_REQUEST['currency-symbol'];
+$_SESSION['userdata']['currency']=$currency;
 
 dbQuery(
 	'update users set meta="'.addslashes(json_encode($meta)).'"'
-	.', currency_symbol="'.addslashes($_REQUEST['currency-symbol']).'"'
+	.', currency_symbol="'.addslashes($currency).'"'
 	.', options='.$options
 	.' where id='.$user_id
 );

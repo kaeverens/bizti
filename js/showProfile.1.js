@@ -65,12 +65,13 @@ function showProfile() {
 			$('#profile-options-wrapper input:checked').each(function(k, v) {
 				options+=Math.pow(2, +$(this).attr('id').replace(/.*\[(.*)\]/, '$1'));
 			});
+			userdata.currency=$('#profile-currency').val();
 			$.post('/php/profile-edit.php', {
 				'company-name':$('#profile-name').val(),
 				'company-phone':$('#profile-phone').val(),
 				'company-email':$('#profile-email').val(),
 				'company-address':$('#profile-address').val(),
-				'currency-symbol':$('#profile-currency').val(),
+				'currency-symbol':userdata.currency,
 				'payment-details':$('#profile-payment').val(),
 				'options':options
 			}, function(ret) {

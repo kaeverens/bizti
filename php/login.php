@@ -6,7 +6,7 @@ $email=$_REQUEST['email'];
 $password=$_REQUEST['password'];
 
 $user=dbRow(
-	'select id,email,level,currency,options'
+	'select id,email,level,currency_symbol,options'
 	.' from users where email="'.addslashes($email).'"'
 	.' and password="'.md5($password).'" and active'
 );
