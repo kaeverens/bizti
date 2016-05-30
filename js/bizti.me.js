@@ -76,7 +76,9 @@ $(function() {
 		window[functionStubs[i]]=(function(fn) {
 			return function(params) {
 				var that=this;
-				var $overlay=$.ui.dialog.overlay.create();
+				var $overlay=$('<div style="position:fixed;background:#000;opacity:.5;'
+					+'left:0;top:0;bottom:0;right:0;"/>')
+					.appendTo('body');
 				$.cachedScript('/js/'+fn+'.php').done(function() {
 					$overlay.remove();
 					window[fn].apply(that, [params]);

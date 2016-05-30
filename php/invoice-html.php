@@ -47,6 +47,7 @@ $template=str_replace(
 );
 $template=str_replace('{{$invoice_number}}', $inv['num'], $template);
 $template=str_replace('{{$invoice_date}}', date('jS M Y', strtotime($inv['cdate'])), $template);
+$template=str_replace('{{$invoice_date_dmy}}', date('d-m-Y', strtotime($inv['cdate'])), $template);
 $template=str_replace('{{$invoice_total}}', price($inv['total']), $template);
 $template=str_replace('{{$invoice_total_tax}}', price($inv['tax']), $template);
 $template=str_replace('{{$invoice_total_net}}', price($inv['total']-$inv['tax']), $template);
@@ -141,12 +142,15 @@ if ($inv['notes']) {
 	$table.='<tr><th colspan="'.$tdsCount.'">Notes:</th></tr>'
 		.'<tr><td colspan="'.$tdsCount.'">'.$inv['notes'].'</td></tr>';
 }
+$total=round($total, 2);
+$inv['total']=round($inv['total'], 2);
 if (strpos($match, 'noTotals')===false) {
 	if ($total!=$inv['total']) {
+		error_log($total.'|'.$inv['total'].'|'.($total-$inv['total']));
 		$table.='<tr><td class="right" colspan="'.($tdsCount-1).'">Sub total</td><td class="right">'
 			.price($total).'</td></tr>';
 		foreach ($totals as $k=>$v) {
-			$tax=dbRow('select * from taxes where id='.$k);
+			$tax=$taxes[$k];
 			if ($tax['percentage']) {
 				$table.='<tr><td class="right" colspan="3">'.htmlspecialchars($tax['name'])
 					.' ('.$tax['percentage'].'%)</td><td class="right">'
