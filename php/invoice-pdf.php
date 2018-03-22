@@ -1,4 +1,5 @@
 <?php
+require_once '../vendor/autoload.php';
 require_once 'basics.php';
 
 if (!isset($_SESSION['userdata']['id'])
@@ -12,7 +13,10 @@ $uid=isset($_SESSION['userdata']['id'])
 
 $imgsrc='local';
 require_once 'invoice-html.php';
-require_once 'dompdf/dompdf_config.inc.php';
+#require_once 'dompdf/dompdf_config.inc.php';
+
+use Dompdf\Dompdf;
+
 
 $dompdf=new DOMPDF();
 $dompdf->load_html($template);

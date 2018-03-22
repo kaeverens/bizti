@@ -24,6 +24,8 @@ function showTasks() {
 		'fnRowCallback':function(nRow, aData, iDisplayIndex) {
 			// { actions
 			var $actions=$('td:nth-child(6)', nRow).empty();
+			$('td:nth-child(1)', nRow).text(aData[1]);
+			$('td:nth-child(2)', nRow).text(aData[2]);
 			$('td:nth-child(3)', nRow).html(priorities[+aData[3]+1]);
 			$('td:nth-child(4)', nRow).html(statii[+aData[4]]);
 			// { counter

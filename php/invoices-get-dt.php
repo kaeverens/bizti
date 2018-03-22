@@ -69,7 +69,7 @@ $result['iTotalRecords']=dbOne(
 );
 $filter='';
 $result['iTotalDisplayRecords']=dbOne(
-	'select count(invoices.id) as ids from invoices, customers'
+	'select count(invoices.id) as ids from invoices left join customers on customers.id=customer_id'
 	.' where '.join(' and ', $filters),
 	'ids'
 );

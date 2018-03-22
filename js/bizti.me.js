@@ -139,4 +139,7 @@ $(function() {
 });
 CKEDITOR.editorConfig = function( config ) {
 };
+function htmlspecialchars(html) {
+	return $('<span/>').text(html).html();
+}
 bizti={};

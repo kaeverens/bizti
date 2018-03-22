@@ -23,7 +23,7 @@ function showDashboard() {
 			$.each(ret, function(k, p) {
 				var html='<div style="width:'+p.width+'px;height:'+p.height+'px;"'
 					+' class="portlet">'
-					+'<h3>'+p.type+'</h3>'
+					+'<h3>'+htmlspecialchars(p.type)+'</h3>'
 					+'<div class="body"/></div>';
 				var $portlet=$(html)
 					.appendTo($wrapper)

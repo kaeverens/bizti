@@ -375,13 +375,15 @@ class http_class
 		{
 			if($this->debug)
 				$this->OutputDebug('Resolving '.$server_type.' server domain "'.$domain.'"...');
+			putenv('RES_OPTIONS=retrans:1 retry:1 timeout:1 attempts:1');
 			if(!strcmp($ip=@gethostbyname($domain),$domain))
 				$ip="";
 		}
 		if(strlen($ip)==0
-		|| (strlen($this->exclude_address)
-		&& !strcmp(@gethostbyname($this->exclude_address),$ip)))
+			|| (strlen($this->exclude_address)
+			&& !strcmp(@gethostbyname($this->exclude_address),$ip))) {
 			return($this->SetError("could not resolve the host domain \"".$domain."\"", HTTP_CLIENT_ERROR_INVALID_SERVER_ADDRESS));
+		}
 		return('');
 	}
 

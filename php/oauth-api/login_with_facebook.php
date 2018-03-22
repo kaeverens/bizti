@@ -12,7 +12,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/config.php';
 
 $client = new oauth_client_class;
 $client->server = 'Facebook';
-$client->redirect_uri = 'http://'.$_SERVER['HTTP_HOST'].
+$client->redirect_uri = 'https://'.$_SERVER['HTTP_HOST'].
 	dirname(strtok($_SERVER['REQUEST_URI'],'?')).'/login_with_facebook.php';
 
 $client->client_id =$facebookClientId;
@@ -32,20 +32,27 @@ if(($success = $client->Initialize()))
 {
 	if(($success = $client->Process()))
 	{
+		error_log(__FILE__.'|'.__LINE__.'|'.json_encode($success));
 		if(strlen($client->access_token))
 		{
 			$success = $client->CallAPI(
 				'https://graph.facebook.com/me', 
 				'GET', array(), array('FailOnAccessError'=>true), $user);
+			error_log(__FILE__.'|'.__LINE__.'|'.json_encode($success));
 		}
 	}
 	$success = $client->Finalize($success);
+	error_log(__FILE__.'|'.__LINE__.'|'.json_encode($success));
 }
 if($client->exit)
 	exit;
 if($success)
 {
+	error_log(json_encode($user));
 	$user_profile=(array)$user;
+	if (!isset($user_profile['email'])) {
+		$user_profile['email']=$user_profile['id'].'@facebook';
+	}
 	require_once '../login-with-userprofile.php';
 }
 else

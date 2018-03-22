@@ -355,6 +355,9 @@ showInvoiceForm=function(inv) {
 			});
 		});
 	}
+	if (inv.products===null) {
+		inv.products=[];
+	}
 	for (var i=0;i<inv.products.length;++i) {
 		addProductRow(inv.products[i]);
 	}

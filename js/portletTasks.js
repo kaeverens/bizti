@@ -23,9 +23,10 @@ function portletTasks() {
 		var table='<table>';
 		for (var i=0;i<ret.length;++i) {
 			var name=ret[i].name||'';
+			console.log(ret[i]);
 			table+='<tr><td><a href="#" data-id="'+ret[i].id+'">'
-				+ret[i].description+'</a></td>'
-				+'<td>'+name+'</td></tr>';
+				+htmlspecialchars(ret[i].description)+'</a></td>'
+				+'<td>'+htmlspecialchars(name)+'</td></tr>';
 		}
 		table+='</table>';
 		var $table=$(table);

@@ -3,7 +3,7 @@ function showInvoices() {
 		customerNames=ret;
 		for (var i=0;i<customerNames.length;++i) {
 			$('.customer-name.cid-'+customerNames[i].id)
-				.html(customerNames[i].name);
+				.text(customerNames[i].name);
 		}
 	}
 	// { form
@@ -24,7 +24,7 @@ function showInvoices() {
 		'bJQueryUI':true,
 		'aaSorting':[[1, 'desc']],
 		'sAjaxSource':'/php/invoices-get-dt.php',
-		'sDom':'frtip',
+		'sDom':'frtipl',
 		'aoColumns':[
 			{'bVisible':false}
 			, null, null, {'sWidth':'80px'}, null

@@ -4,8 +4,8 @@ function portletOutstandingInvoices() {
 		var html='<table>';
 		for (var i=0;i<ret.length;++i) {
 			html+='<tr data-id="'+ret[i].id+'">'
-				+'<td><a href="#" class="invoice">'+ret[i].name+'</a></td>'
-				+'<td class="currency">'+currency(ret[i].amt)+'</td>'
+				+'<td><a href="#" class="invoice">'+htmlspecialchars(ret[i].name)+'</a></td>'
+				+'<td class="currency">'+htmlspecialchars(currency(ret[i].amt))+'</td>'
 				+'<td style="width:1%"><a href="#" data-iid="'+ret[i].id+'"'
 				+' data-owed="'+ret[i].amt+'" class="add-payment">[pay]</a></td>'
 				+'</tr>';
